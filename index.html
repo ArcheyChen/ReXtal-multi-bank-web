@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>代号:重结晶</title>
+    <script type="module" crossorigin src="./assets/index-D5mfHb5O.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CwOxDttX.css">
+  </head>
+  <body>
+    <main id="app">
+      <section class="panel">
+        <header class="panel-header">
+          <div>
+            <h1>代号:重结晶</h1>
+            <p class="subtitle">Ausar'S M3电影卡水晶引擎重置版</p>
+          </div>
+          <span class="badge">10 FPS</span>
+        </header>
+
+        <section class="intro">
+          <p>
+            M3水晶引擎是GBA时代的优秀视频播放器，然而已经不再维护，无法在现代系统上运行，
+            M3电影卡也难以买到，本项目旨在将其移植到现代系统上，并支持现代的输入视频格式。
+            本项目免费提供，禁止商用。
+          </p>
+          <p>
+            本工具以原样提供，不附带任何明示或暗示的担保。请自行确认生成文件适用于你的设备、
+            烧录卡和使用场景；因使用本工具产生的数据损坏、兼容性问题或其他损失，项目作者不承担责任。
+          </p>
+        </section>
+
+        <section class="info-grid" aria-label="项目说明">
+          <article class="info-card">
+            <h2>支持卡带</h2>
+            <p>支持 CHIS 1.0G / 2.0G 卡带、D 商合卡卡带。普通 16MB / 32MB GBA 烧录卡可使用单卡容量选项。</p>
+          </article>
+          <article class="info-card">
+            <h2>播放控制</h2>
+            <p>A 暂停或恢复；L / R 按 1 分钟粒度后退或前进；START / SELECT 进入菜单。菜单内用 UP / DOWN 移动，A 选择，B 或 SELECT 返回。</p>
+          </article>
+          <article class="info-card">
+            <h2>发布地址</h2>
+            <p>
+              GitHub Pages：
+              <a href="https://archeychen.github.io/ReXtal-multi-bank-web/" target="_blank" rel="noreferrer">archeychen.github.io/ReXtal-multi-bank-web</a>
+            </p>
+            <p>
+              Cloudflare：
+              <a href="https://gbam3.ausar.xyz" target="_blank" rel="noreferrer">gbam3.ausar.xyz</a>
+            </p>
+            <p>
+              发布版仓库：
+              <a href="https://github.com/ArcheyChen/ReXtal-multi-bank-web" target="_blank" rel="noreferrer">GitHub</a>
+              ，欢迎 Star。
+            </p>
+          </article>
+          <article class="info-card">
+            <h2>转载规则</h2>
+            <p>可自由转载、镜像、重新封装，但必须保持免费，并注明作者 Ausar 与项目出处。为避免他人改名闭源，本项目源码暂不公开；待项目知名度提高后，再考虑完全开源。</p>
+          </article>
+        </section>
+
+        <div class="file-zone">
+          <label class="file-row">
+            <span>视频文件</span>
+            <input id="file" type="file" accept="video/*,audio/*,.mp4,.mkv,.webm,.mov,.avi,.wmv" />
+          </label>
+        </div>
+
+        <div class="controls">
+          <div class="field">
+            <label for="duration-mode">长度限制</label>
+            <select id="duration-mode">
+              <option value="none" selected>不限制长度</option>
+              <option value="seconds">限制秒数</option>
+            </select>
+          </div>
+          <div class="field" id="seconds-row" hidden>
+            <label for="seconds">限制秒数</label>
+            <input id="seconds" type="number" min="1" max="86400" value="30" />
+          </div>
+          <div class="field">
+            <label for="mode">质量模式</label>
+            <select id="mode">
+              <option value="0">最高质量</option>
+              <option value="1">高质量</option>
+              <option value="2" selected>标准质量</option>
+              <option value="3">高压缩</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="max-size">GBA 大小上限</label>
+            <select id="max-size">
+              <option value="16">16MB（单卡）</option>
+              <option value="32">32MB（单卡）</option>
+              <option value="128">128MB（合卡）</option>
+              <option value="256" selected>256MB（合卡）</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button id="start" type="button">生成 GBA</button>
+          <div class="progress-wrap">
+            <progress id="progress" value="0" max="1"></progress>
+            <div id="progress-text">已转码 00:00 / 00:00</div>
+          </div>
+        </div>
+
+        <section class="log-section" aria-label="转码记录">
+          <div class="section-title">转码记录</div>
+          <pre id="log"></pre>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

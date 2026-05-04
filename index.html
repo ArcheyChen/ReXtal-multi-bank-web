@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="pageTitle">代号:重结晶</title>
-    <script type="module" crossorigin src="./assets/index-DAkb-ZpZ.js"></script>
+    <script type="module" crossorigin src="./assets/index-BfBPMxkG.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-BszCJ5aK.css">
   </head>
   <body>
@@ -160,6 +160,15 @@
                 <option value="fill" data-i18n="scaleFill">填满画面</option>
               </select>
             </div>
+            <div class="field">
+              <label for="input-rotation" data-i18n="inputRotationLabel">输入旋转</label>
+              <select id="input-rotation">
+                <option value="0" selected data-i18n="inputRotation0">保持原方向</option>
+                <option value="270" data-i18n="inputRotationLeft">左转 90°</option>
+                <option value="90" data-i18n="inputRotationRight">右转 90°</option>
+                <option value="180" data-i18n="inputRotation180">旋转 180°</option>
+              </select>
+            </div>
             <div class="field" data-scale-size-control>
               <label for="image-width" data-i18n="imageWidthLabel">输出宽度</label>
               <input id="image-width" type="number" min="8" max="240" step="8" value="240" />
@@ -203,21 +212,31 @@
         <section class="release-notes" aria-label="更新记录">
           <div class="release-heading">
             <h2 data-i18n="changelogTitle">更新记录</h2>
-            <span id="version-text" class="version-pill">v1.3.0</span>
+            <span id="version-text" class="version-pill">v1.3.1</span>
           </div>
           <article class="release-entry">
             <div class="release-meta">
-              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.3.0</strong></span>
+              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.3.1</strong></span>
               <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-04">2026-05-04</time></span>
             </div>
             <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
             <ul>
-              <li data-i18n="changelog130_1">补全了不同的音频压缩格式。</li>
-              <li data-i18n="changelog130_2">补全了各画质档位与音频格式的对应。</li>
+              <li data-i18n="changelog131_1">新增了输入旋转支持。</li>
             </ul>
           </article>
           <details class="release-history">
             <summary data-i18n="changelogHistorySummary">展开完整记录</summary>
+            <article class="release-entry">
+              <div class="release-meta">
+                <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.3.0</strong></span>
+                <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-04">2026-05-04</time></span>
+              </div>
+              <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
+              <ul>
+                <li data-i18n="changelog130_1">补全了不同的音频压缩格式。</li>
+                <li data-i18n="changelog130_2">补全了各画质档位与音频格式的对应。</li>
+              </ul>
+            </article>
             <article class="release-entry">
               <div class="release-meta">
                 <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.2.1</strong></span>

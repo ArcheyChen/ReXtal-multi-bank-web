@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="pageTitle">代号:重结晶</title>
-    <script type="module" crossorigin src="./assets/index-BfBPMxkG.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BszCJ5aK.css">
+    <script type="module" crossorigin src="./assets/index-CavNoWd0.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-NIxJmb_y.css">
   </head>
   <body>
     <main id="app">
@@ -124,6 +124,10 @@
               <option value="4" data-i18n="audioMode4">Mode 4：11.025kHz 单声道 2-bit，约 2.7 KiB/s</option>
             </select>
           </div>
+          <div class="field">
+            <label for="worker-threads" data-i18n="workerThreadsLabel">编码线程数</label>
+            <select id="worker-threads"></select>
+          </div>
         </div>
 
         <section id="guide-controls" class="guide-controls" aria-label="Guide 参数" hidden>
@@ -204,6 +208,17 @@
           </div>
         </div>
 
+        <section class="worker-status" aria-label="多线程状态">
+          <div class="worker-status-header">
+            <div>
+              <div class="section-title" data-i18n="workerStatusTitle">多线程状态</div>
+              <div id="worker-phase" class="worker-phase" data-i18n="workerStatusIdle">等待开始</div>
+            </div>
+            <span id="worker-summary" class="worker-summary"></span>
+          </div>
+          <div id="worker-list" class="worker-list"></div>
+        </section>
+
         <section class="log-section" aria-label="转码记录">
           <div class="section-title" data-i18n="logTitle">转码记录</div>
           <pre id="log"></pre>
@@ -212,20 +227,32 @@
         <section class="release-notes" aria-label="更新记录">
           <div class="release-heading">
             <h2 data-i18n="changelogTitle">更新记录</h2>
-            <span id="version-text" class="version-pill">v1.3.1</span>
+            <span id="version-text" class="version-pill">v1.4.0</span>
           </div>
           <article class="release-entry">
             <div class="release-meta">
-              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.3.1</strong></span>
+              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.4.0</strong></span>
               <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-04">2026-05-04</time></span>
             </div>
             <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
             <ul>
-              <li data-i18n="changelog131_1">新增了输入旋转支持。</li>
+              <li data-i18n="changelog140_1">新增多线程视频编码。</li>
+              <li data-i18n="changelog140_2">支持手动设置编码线程数。</li>
+              <li data-i18n="changelog140_3">新增每线程进度与编码阶段状态面板。</li>
             </ul>
           </article>
           <details class="release-history">
             <summary data-i18n="changelogHistorySummary">展开完整记录</summary>
+            <article class="release-entry">
+              <div class="release-meta">
+                <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.3.1</strong></span>
+                <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-04">2026-05-04</time></span>
+              </div>
+              <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
+              <ul>
+                <li data-i18n="changelog131_1">新增了输入旋转支持。</li>
+              </ul>
+            </article>
             <article class="release-entry">
               <div class="release-meta">
                 <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.3.0</strong></span>

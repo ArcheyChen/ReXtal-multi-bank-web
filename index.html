@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="pageTitle">代号:重结晶</title>
-    <script type="module" crossorigin src="./assets/index-CavNoWd0.js"></script>
+    <script type="module" crossorigin src="./assets/index-Cy7GFVIR.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-NIxJmb_y.css">
   </head>
   <body>
@@ -93,8 +93,8 @@
           <div class="field">
             <label for="ui-mode" data-i18n="uiModeLabel">参数模式</label>
             <select id="ui-mode">
-              <option value="simple" selected data-i18n="uiModeSimple">简易三档</option>
-              <option value="guide" data-i18n="uiModeGuide">Guide 复杂模式</option>
+              <option value="simple" selected data-i18n="uiModeSimple">简易模式</option>
+              <option value="guide" data-i18n="uiModeGuide">进阶模式</option>
             </select>
           </div>
           <div class="field" data-simple-controls>
@@ -125,13 +125,22 @@
             </select>
           </div>
           <div class="field">
+            <label for="input-rotation" data-i18n="inputRotationLabel">输入旋转</label>
+            <select id="input-rotation">
+              <option value="0" selected data-i18n="inputRotation0">保持原方向</option>
+              <option value="270" data-i18n="inputRotationLeft">左转 90°</option>
+              <option value="90" data-i18n="inputRotationRight">右转 90°</option>
+              <option value="180" data-i18n="inputRotation180">旋转 180°</option>
+            </select>
+          </div>
+          <div class="field">
             <label for="worker-threads" data-i18n="workerThreadsLabel">编码线程数</label>
             <select id="worker-threads"></select>
           </div>
         </div>
 
-        <section id="guide-controls" class="guide-controls" aria-label="Guide 参数" hidden>
-          <div class="section-title" data-i18n="guideTitle">Guide 复杂参数</div>
+        <section id="guide-controls" class="guide-controls" aria-label="进阶参数" hidden>
+          <div class="section-title" data-i18n="guideTitle">进阶参数</div>
           <div class="guide-grid">
             <div class="field">
               <label for="guide-machine" data-i18n="machineLabel">机种</label>
@@ -162,15 +171,6 @@
                 <option value="preserve" selected data-i18n="scalePreserve">保留比例</option>
                 <option value="stretch" data-i18n="scaleStretch">拉伸到指定尺寸</option>
                 <option value="fill" data-i18n="scaleFill">填满画面</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="input-rotation" data-i18n="inputRotationLabel">输入旋转</label>
-              <select id="input-rotation">
-                <option value="0" selected data-i18n="inputRotation0">保持原方向</option>
-                <option value="270" data-i18n="inputRotationLeft">左转 90°</option>
-                <option value="90" data-i18n="inputRotationRight">右转 90°</option>
-                <option value="180" data-i18n="inputRotation180">旋转 180°</option>
               </select>
             </div>
             <div class="field" data-scale-size-control>
@@ -227,11 +227,11 @@
         <section class="release-notes" aria-label="更新记录">
           <div class="release-heading">
             <h2 data-i18n="changelogTitle">更新记录</h2>
-            <span id="version-text" class="version-pill">v1.4.0</span>
+            <span id="version-text" class="version-pill">v1.4.0 hotfix</span>
           </div>
           <article class="release-entry">
             <div class="release-meta">
-              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.4.0</strong></span>
+              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.4.0 hotfix</strong></span>
               <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-04">2026-05-04</time></span>
             </div>
             <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
@@ -239,6 +239,7 @@
               <li data-i18n="changelog140_1">新增多线程视频编码。</li>
               <li data-i18n="changelog140_2">支持手动设置编码线程数。</li>
               <li data-i18n="changelog140_3">新增每线程进度与编码阶段状态面板。</li>
+              <li data-i18n="changelog140_4">Hotfix：简易模式可直接设置输入旋转，并补充关键加载阶段日志。</li>
             </ul>
           </article>
           <details class="release-history">

@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="pageTitle">代号:重结晶</title>
-    <script type="module" crossorigin src="./assets/index-5XNUkzqy.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DSUxK-YW.css">
+    <script type="module" crossorigin src="./assets/index-DzTQ405L.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BszCJ5aK.css">
   </head>
   <body>
     <main id="app">
@@ -91,12 +91,18 @@
             <input id="seconds" type="number" min="1" max="86400" value="30" />
           </div>
           <div class="field">
-            <label for="mode" data-i18n="modeLabel">质量模式</label>
-            <select id="mode">
-              <option value="0" data-i18n="mode0">最高质量</option>
-              <option value="1" data-i18n="mode1">高质量</option>
-              <option value="2" selected data-i18n="mode2">标准质量</option>
-              <option value="3" data-i18n="mode3">高压缩</option>
+            <label for="ui-mode" data-i18n="uiModeLabel">参数模式</label>
+            <select id="ui-mode">
+              <option value="simple" selected data-i18n="uiModeSimple">简易三档</option>
+              <option value="guide" data-i18n="uiModeGuide">Guide 复杂模式</option>
+            </select>
+          </div>
+          <div class="field" data-simple-controls>
+            <label for="simple-preset" data-i18n="simplePresetLabel">简易质量</label>
+            <select id="simple-preset">
+              <option value="high" data-i18n="simpleHigh">高质量模式</option>
+              <option value="standard" selected data-i18n="simpleStandard">标准模式</option>
+              <option value="low" data-i18n="simpleLow">高压缩比模式</option>
             </select>
           </div>
           <div class="field">
@@ -110,6 +116,67 @@
           </div>
         </div>
 
+        <section id="guide-controls" class="guide-controls" aria-label="Guide 参数" hidden>
+          <div class="section-title" data-i18n="guideTitle">Guide 复杂参数</div>
+          <div class="guide-grid">
+            <div class="field">
+              <label for="guide-machine" data-i18n="machineLabel">机种</label>
+              <select id="guide-machine">
+                <option value="gbm" selected data-i18n="machineGbm">GBA（高亮屏）/ GBM</option>
+                <option value="gba" data-i18n="machineGba">GBA（普亮屏）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="guide-speed" data-i18n="speedLabel">水晶引擎</label>
+              <select id="guide-speed">
+                <option value="fast" selected data-i18n="speedFast">水晶高速（浮点）</option>
+                <option value="slow" data-i18n="speedSlow">水晶低速（整数）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="guide-quality" data-i18n="qualityLabel">图像质量</label>
+              <select id="guide-quality">
+                <option value="0" data-i18n="qualityBest">最好</option>
+                <option value="1" data-i18n="qualityGood">较好</option>
+                <option value="2" selected data-i18n="qualityNormal">正常</option>
+                <option value="3" data-i18n="qualityCompress">压缩</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="scale-mode" data-i18n="scaleModeLabel">画面比例</label>
+              <select id="scale-mode">
+                <option value="preserve" selected data-i18n="scalePreserve">保留比例</option>
+                <option value="stretch" data-i18n="scaleStretch">拉伸到指定尺寸</option>
+                <option value="fill" data-i18n="scaleFill">填满画面</option>
+              </select>
+            </div>
+            <div class="field" data-scale-size-control>
+              <label for="image-width" data-i18n="imageWidthLabel">输出宽度</label>
+              <input id="image-width" type="number" min="8" max="240" step="8" value="240" />
+            </div>
+            <div class="field" data-scale-size-control>
+              <label for="image-height" data-i18n="imageHeightLabel">输出高度</label>
+              <input id="image-height" type="number" min="8" max="160" step="8" value="160" />
+            </div>
+            <div class="field">
+              <label for="contrast" data-i18n="contrastLabel">对比度</label>
+              <input id="contrast" type="number" min="0" max="99" value="50" />
+            </div>
+            <div class="field">
+              <label for="brightness" data-i18n="brightnessLabel">亮度</label>
+              <input id="brightness" type="number" min="0" max="99" value="50" />
+            </div>
+            <div class="field">
+              <label for="enhance" data-i18n="enhanceLabel">色阶增强</label>
+              <input id="enhance" type="number" min="0" max="20" value="10" />
+            </div>
+            <div class="field">
+              <label for="sharpness" data-i18n="sharpnessLabel">锐化</label>
+              <input id="sharpness" type="number" min="0" max="9" value="8" />
+            </div>
+          </div>
+        </section>
+
         <div class="action-row">
           <button id="start" type="button" data-i18n="startButton">生成 GBA</button>
           <div class="progress-wrap">
@@ -122,6 +189,48 @@
           <div class="section-title" data-i18n="logTitle">转码记录</div>
           <pre id="log"></pre>
         </section>
+
+        <section class="release-notes" aria-label="更新记录">
+          <div class="release-heading">
+            <h2 data-i18n="changelogTitle">更新记录</h2>
+            <span id="version-text" class="version-pill">v1.2.1</span>
+          </div>
+          <article class="release-entry">
+            <div class="release-meta">
+              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.2.1</strong></span>
+              <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-04">2026-05-04</time></span>
+            </div>
+            <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
+            <ul>
+              <li data-i18n="changelog121_1">压缩 GBA 封装布局，提高 16MB/32MB 卡带空间利用率。</li>
+              <li data-i18n="changelog121_2">移除了早期保守布局留下的约 3.5MB ROM 空洞。</li>
+              <li data-i18n="changelog121_3">新增播放器体积断言，避免后续播放器增大后覆盖媒体元数据。</li>
+            </ul>
+          </article>
+          <details class="release-history">
+            <summary data-i18n="changelogHistorySummary">展开完整记录</summary>
+            <article class="release-entry">
+              <div class="release-meta">
+                <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.2.0</strong></span>
+                <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-04">2026-05-04</time></span>
+              </div>
+              <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
+              <ul>
+                <li data-i18n="changelog120_1">严格对齐了浮点编码引擎的效果</li>
+                <li data-i18n="changelog120_2">支持了整数编码引擎</li>
+                <li data-i18n="changelog120_3">开放了更细节的参数选项</li>
+                <li data-i18n="changelog120_4">现在会尝试多种解码方式</li>
+              </ul>
+            </article>
+          </details>
+        </section>
+
+        <footer class="build-info" aria-label="Build 信息">
+          <span data-i18n="buildTitle">Build</span>
+          <span><span data-i18n="buildWeb">网页</span>: <code id="build-web"></code></span>
+          <span><span data-i18n="buildEncoder">编码器</span>: <code id="build-encoder"></code></span>
+          <span><span data-i18n="buildDecoder">解码器</span>: <code id="build-decoder"></code></span>
+        </footer>
       </section>
     </main>
   </body>

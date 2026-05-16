@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="pageTitle">代号:重结晶</title>
-    <script type="module" crossorigin src="./assets/index-D4I_VXMg.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-NIxJmb_y.css">
+    <script type="module" crossorigin src="./assets/index-ZOawp2A2.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DDsDizkc.css">
   </head>
   <body>
     <main id="app">
@@ -137,6 +137,13 @@
             <label for="worker-threads" data-i18n="workerThreadsLabel">编码线程数</label>
             <select id="worker-threads"></select>
           </div>
+          <div class="field">
+            <label class="checkbox-control">
+              <input id="allow-catchup-tearing" type="checkbox" />
+              <span data-i18n="allowCatchupTearingLabel">追帧时允许画面撕裂</span>
+            </label>
+            <div class="field-help" data-i18n="allowCatchupTearingHelp">复杂画面下可能更容易追上进度，但快速运动时可能看到撕裂。</div>
+          </div>
         </div>
 
         <section id="guide-controls" class="guide-controls" aria-label="进阶参数" hidden>
@@ -227,14 +234,27 @@
         <section class="release-notes" aria-label="更新记录">
           <div class="release-heading">
             <h2 data-i18n="changelogTitle">更新记录</h2>
-            <span id="version-text" class="version-pill">v1.4.5 hotfix</span>
+            <span id="version-text" class="version-pill">v1.4.6</span>
           </div>
           <article class="release-entry">
             <div class="release-meta">
-              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.4.5 hotfix</strong></span>
-              <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-07">2026-05-07</time></span>
+              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.4.6</strong></span>
+              <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-17">2026-05-17</time></span>
             </div>
             <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
+            <ul>
+              <li data-i18n="changelog146_1">新增追帧同步选项，可选择复杂画面追帧时是否允许画面撕裂。</li>
+              <li data-i18n="changelog146_2">扩展 GBA 封装元数据，为后续播放器选项预留可扩展配置块。</li>
+            </ul>
+          </article>
+          <details class="release-history">
+            <summary data-i18n="changelogHistorySummary">展开完整记录</summary>
+            <article class="release-entry">
+              <div class="release-meta">
+                <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.4.5 hotfix</strong></span>
+                <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-07">2026-05-07</time></span>
+              </div>
+              <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
             <ul>
               <li data-i18n="changelog145_1">新增可选的 SRAM 播放进度保存。</li>
               <li data-i18n="changelog145_2">重绘 GBA 播放器菜单，使用新的点阵字体和半透明浮层。</li>
@@ -243,9 +263,7 @@
               <li data-i18n="changelog145_5">Hotfix：修复多声道电影下混时对白声道可能丢失的问题。</li>
               <li data-i18n="changelog145_6">Hotfix：修复 Mode 0 最高画质复杂帧可能因长度溢出而花屏的问题。</li>
             </ul>
-          </article>
-          <details class="release-history">
-            <summary data-i18n="changelogHistorySummary">展开完整记录</summary>
+            </article>
             <article class="release-entry">
               <div class="release-meta">
                 <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.4.4 hotfix</strong></span>

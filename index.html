@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="pageTitle">代号:重结晶</title>
-    <script type="module" crossorigin src="./assets/index-ZOawp2A2.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DDsDizkc.css">
+    <script type="module" crossorigin src="./assets/index-I5O_hh-p.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-WAiCslGC.css">
   </head>
   <body>
     <main id="app">
@@ -60,6 +60,9 @@
               <a href="https://github.com/ArcheyChen/ReXtal-multi-bank-web" target="_blank" rel="noreferrer">GitHub</a>
               <span data-i18n="starText">，欢迎 Star。</span>
             </p>
+            <a class="link-button" href="downloads/FilmPlay_SC_SDHC_FAT32_Ausar_20260619.gba" download data-i18n="downloadScPlayer">
+              下载 SC 烧录卡 SDHC 专用播放器
+            </a>
           </article>
           <article class="info-card">
             <h2 data-i18n="cardLicenseTitle">转载规则</h2>
@@ -69,7 +72,7 @@
 
         <div class="file-zone">
           <div class="file-row">
-            <span data-i18n="fileLabel">视频文件</span>
+            <span data-i18n="fileLabel">媒体文件</span>
             <input id="file" class="native-file-input" type="file" accept="video/*,audio/*,.mp4,.mkv,.webm,.mov,.avi,.wmv" />
             <div class="file-picker">
               <button id="file-button" type="button" data-i18n="selectFile">选择文件</button>
@@ -79,6 +82,30 @@
         </div>
 
         <div class="controls">
+          <div class="field">
+            <label for="content-mode" data-i18n="contentModeLabel">生成内容</label>
+            <select id="content-mode">
+              <option value="video" selected data-i18n="contentModeVideo">视频</option>
+              <option value="audio" data-i18n="contentModeAudio">音乐</option>
+            </select>
+          </div>
+          <div class="field export-field">
+            <span data-i18n="exportFilesLabel">导出文件</span>
+            <div class="export-options" role="group" aria-label="导出文件">
+              <label class="export-option" data-video-export-option>
+                <input id="export-gba" type="checkbox" checked />
+                <span data-i18n="exportGbaLabel">GBA ROM</span>
+              </label>
+              <label class="export-option" data-video-export-option>
+                <input id="export-gbm" type="checkbox" />
+                <span data-i18n="exportGbmLabel">GBM 视频</span>
+              </label>
+              <label class="export-option">
+                <input id="export-gbs" type="checkbox" />
+                <span data-i18n="exportGbsLabel">GBS 音频</span>
+              </label>
+            </div>
+          </div>
           <div class="field">
             <label for="duration-mode" data-i18n="durationModeLabel">长度限制</label>
             <select id="duration-mode">
@@ -90,14 +117,14 @@
             <label for="seconds" data-i18n="secondsLabel">限制秒数</label>
             <input id="seconds" type="number" min="1" max="86400" value="30" />
           </div>
-          <div class="field">
+          <div class="field" data-video-output-control>
             <label for="ui-mode" data-i18n="uiModeLabel">参数模式</label>
             <select id="ui-mode">
               <option value="simple" selected data-i18n="uiModeSimple">简易模式</option>
               <option value="guide" data-i18n="uiModeGuide">进阶模式</option>
             </select>
           </div>
-          <div class="field" data-simple-controls>
+          <div class="field" data-simple-controls data-video-output-control>
             <label for="simple-preset" data-i18n="simplePresetLabel">简易质量</label>
             <select id="simple-preset">
               <option value="high" data-i18n="simpleHigh">高质量模式</option>
@@ -106,13 +133,22 @@
             </select>
           </div>
           <div class="field">
-            <label for="max-size" data-i18n="maxSizeLabel">GBA 大小上限</label>
+            <label for="max-size" data-i18n="maxSizeLabel">大小上限</label>
             <select id="max-size">
               <option value="16" data-i18n="size16">16MB（单卡）</option>
               <option value="32" data-i18n="size32">32MB（单卡）</option>
               <option value="128" data-i18n="size128">128MB（合卡）</option>
               <option value="256" selected data-i18n="size256">256MB（合卡）</option>
+              <option value="512" data-i18n="size512">512MB</option>
+              <option value="1024" data-i18n="size1024">1GB</option>
+              <option value="2048" data-i18n="size2048">2GB</option>
+              <option value="4095" data-i18n="size4095">4GB（FAT32 上限）</option>
+              <option value="custom" data-i18n="sizeCustom">自定义</option>
             </select>
+          </div>
+          <div class="field" id="custom-size-row" hidden>
+            <label for="custom-size" data-i18n="customSizeLabel">自定义 MB</label>
+            <input id="custom-size" type="number" min="1" max="4095" value="512" />
           </div>
           <div class="field">
             <label for="audio-mode" data-i18n="audioModeLabel">音频模式</label>
@@ -124,7 +160,7 @@
               <option value="4" data-i18n="audioMode4">Mode 4：11.025kHz 单声道 2-bit，约 2.7 KiB/s</option>
             </select>
           </div>
-          <div class="field">
+          <div class="field" data-video-output-control>
             <label for="input-rotation" data-i18n="inputRotationLabel">输入旋转</label>
             <select id="input-rotation">
               <option value="0" selected data-i18n="inputRotation0">保持原方向</option>
@@ -133,11 +169,11 @@
               <option value="180" data-i18n="inputRotation180">旋转 180°</option>
             </select>
           </div>
-          <div class="field">
+          <div class="field" data-video-output-control>
             <label for="worker-threads" data-i18n="workerThreadsLabel">编码线程数</label>
             <select id="worker-threads"></select>
           </div>
-          <div class="field">
+          <div class="field" data-gba-output-control>
             <label class="checkbox-control">
               <input id="allow-catchup-tearing" type="checkbox" />
               <span data-i18n="allowCatchupTearingLabel">追帧时允许画面撕裂</span>
@@ -146,7 +182,7 @@
           </div>
         </div>
 
-        <section id="guide-controls" class="guide-controls" aria-label="进阶参数" hidden>
+        <section id="guide-controls" class="guide-controls" aria-label="进阶参数" data-video-output-control hidden>
           <div class="section-title" data-i18n="guideTitle">进阶参数</div>
           <div class="guide-grid">
             <div class="field">
@@ -208,12 +244,17 @@
         </section>
 
         <div class="action-row">
-          <button id="start" type="button" data-i18n="startButton">生成 GBA</button>
+          <button id="start" type="button" data-i18n="startButton">开始生成</button>
           <div class="progress-wrap">
             <progress id="progress" value="0" max="1"></progress>
             <div id="progress-text"></div>
           </div>
         </div>
+
+        <section id="download-section" class="download-section" aria-label="生成结果" hidden>
+          <div class="section-title" data-i18n="generatedFilesTitle">生成结果</div>
+          <div id="download-list" class="download-list"></div>
+        </section>
 
         <section class="worker-status" aria-label="多线程状态">
           <div class="worker-status-header">
@@ -234,21 +275,33 @@
         <section class="release-notes" aria-label="更新记录">
           <div class="release-heading">
             <h2 data-i18n="changelogTitle">更新记录</h2>
-            <span id="version-text" class="version-pill">v1.4.6</span>
+            <span id="version-text" class="version-pill">v1.5.0</span>
           </div>
           <article class="release-entry">
             <div class="release-meta">
-              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.4.6</strong></span>
-              <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-17">2026-05-17</time></span>
+              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.0</strong></span>
+              <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-06-20">2026-06-20</time></span>
             </div>
             <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
             <ul>
-              <li data-i18n="changelog146_1">新增追帧同步选项，可选择复杂画面追帧时是否允许画面撕裂。</li>
-              <li data-i18n="changelog146_2">扩展 GBA 封装元数据，为后续播放器选项预留可扩展配置块。</li>
+              <li data-i18n="changelog150_1">支持直接导出 GBM 视频与 GBS 音频文件。</li>
+              <li data-i18n="changelog150_2">新增 SC 烧录卡 SDHC 专用播放器下载。</li>
+              <li data-i18n="changelog150_3">优化导出文件类型选择界面。</li>
             </ul>
           </article>
           <details class="release-history">
             <summary data-i18n="changelogHistorySummary">展开完整记录</summary>
+            <article class="release-entry">
+              <div class="release-meta">
+                <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.4.6</strong></span>
+                <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-05-17">2026-05-17</time></span>
+              </div>
+              <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
+              <ul>
+                <li data-i18n="changelog146_1">新增追帧同步选项，可选择复杂画面追帧时是否允许画面撕裂。</li>
+                <li data-i18n="changelog146_2">扩展 GBA 封装元数据，为后续播放器选项预留可扩展配置块。</li>
+              </ul>
+            </article>
             <article class="release-entry">
               <div class="release-meta">
                 <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.4.5 hotfix</strong></span>

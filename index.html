@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="pageTitle">代号:重结晶</title>
-    <script type="module" crossorigin src="./assets/index-I5O_hh-p.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-WAiCslGC.css">
+    <script type="module" crossorigin src="./assets/index-HXiMWCWh.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-fd3RAi6P.css">
   </head>
   <body>
     <main id="app">
@@ -89,22 +89,12 @@
               <option value="audio" data-i18n="contentModeAudio">音乐</option>
             </select>
           </div>
-          <div class="field export-field">
-            <span data-i18n="exportFilesLabel">导出文件</span>
-            <div class="export-options" role="group" aria-label="导出文件">
-              <label class="export-option" data-video-export-option>
-                <input id="export-gba" type="checkbox" checked />
-                <span data-i18n="exportGbaLabel">GBA ROM</span>
-              </label>
-              <label class="export-option" data-video-export-option>
-                <input id="export-gbm" type="checkbox" />
-                <span data-i18n="exportGbmLabel">GBM 视频</span>
-              </label>
-              <label class="export-option">
-                <input id="export-gbs" type="checkbox" />
-                <span data-i18n="exportGbsLabel">GBS 音频</span>
-              </label>
-            </div>
+          <div class="field" data-video-output-control>
+            <label for="export-mode" data-i18n="exportFilesLabel">导出格式</label>
+            <select id="export-mode">
+              <option value="gba" selected data-i18n="exportGbaLabel">GBA ROM</option>
+              <option value="files" data-i18n="exportMediaFilesLabel">GBM 视频 + GBS 音频</option>
+            </select>
           </div>
           <div class="field">
             <label for="duration-mode" data-i18n="durationModeLabel">长度限制</label>
@@ -132,23 +122,38 @@
               <option value="low" data-i18n="simpleLow">高压缩比模式</option>
             </select>
           </div>
-          <div class="field">
-            <label for="max-size" data-i18n="maxSizeLabel">大小上限</label>
-            <select id="max-size">
-              <option value="16" data-i18n="size16">16MB（单卡）</option>
-              <option value="32" data-i18n="size32">32MB（单卡）</option>
-              <option value="128" data-i18n="size128">128MB（合卡）</option>
-              <option value="256" selected data-i18n="size256">256MB（合卡）</option>
-              <option value="512" data-i18n="size512">512MB</option>
-              <option value="1024" data-i18n="size1024">1GB</option>
-              <option value="2048" data-i18n="size2048">2GB</option>
-              <option value="4095" data-i18n="size4095">4GB（FAT32 上限）</option>
-              <option value="custom" data-i18n="sizeCustom">自定义</option>
-            </select>
-          </div>
-          <div class="field" id="custom-size-row" hidden>
-            <label for="custom-size" data-i18n="customSizeLabel">自定义 MB</label>
-            <input id="custom-size" type="number" min="1" max="4095" value="512" />
+          <div class="gba-rom-options" data-gba-output-control>
+            <div class="field">
+              <label for="max-size" data-i18n="maxSizeLabel">单个 ROM 大小</label>
+              <select id="max-size">
+                <option value="16" data-i18n="size16">16MB（单卡）</option>
+                <option value="32" data-i18n="size32">32MB（单卡）</option>
+                <option value="64" data-i18n="size64">64MB（合卡）</option>
+                <option value="128" data-i18n="size128">128MB（合卡）</option>
+                <option value="256" selected data-i18n="size256">256MB（合卡）</option>
+                <option value="custom" data-i18n="sizeCustom">自定义</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="max-rom-parts" data-i18n="maxRomPartsLabel">最多分卷数量</label>
+              <select id="max-rom-parts">
+                <option value="1" selected data-i18n="romParts1">1 个</option>
+                <option value="2" data-i18n="romParts2">2 个</option>
+                <option value="4" data-i18n="romParts4">4 个</option>
+                <option value="8" data-i18n="romParts8">8 个</option>
+                <option value="16" data-i18n="romParts16">16 个</option>
+                <option value="custom" data-i18n="romPartsCustom">自定义</option>
+              </select>
+            </div>
+            <div class="field" id="custom-size-row" data-gba-output-control hidden>
+              <label for="custom-size" data-i18n="customSizeLabel">自定义 MB</label>
+              <input id="custom-size" type="number" min="8" max="256" step="4" value="256" />
+            </div>
+            <div class="field" id="custom-rom-parts-row" data-gba-output-control hidden>
+              <label for="custom-rom-parts" data-i18n="customRomPartsLabel">自定义数量</label>
+              <input id="custom-rom-parts" type="number" min="1" max="64" value="8" />
+            </div>
+            <div class="field-help gba-rom-help" data-i18n="romSizeHelp">总上限 = 单个 ROM 大小乘以最多分卷数量；影片超过单个 ROM 大小时会按时间顺序生成 part01、part02 等分卷，不是重复文件。假设你不知道手上的卡是什么卡，单个 ROM 大小最多请选择 32MB；64MB 以上只适合明确支持合卡/multibank 的卡。</div>
           </div>
           <div class="field">
             <label for="audio-mode" data-i18n="audioModeLabel">音频模式</label>
@@ -275,22 +280,34 @@
         <section class="release-notes" aria-label="更新记录">
           <div class="release-heading">
             <h2 data-i18n="changelogTitle">更新记录</h2>
-            <span id="version-text" class="version-pill">v1.5.0</span>
+            <span id="version-text" class="version-pill">v1.5.1</span>
           </div>
           <article class="release-entry">
             <div class="release-meta">
-              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.0</strong></span>
-              <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-06-20">2026-06-20</time></span>
+              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.1</strong></span>
+              <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-07-02">2026-07-02</time></span>
             </div>
             <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
             <ul>
-              <li data-i18n="changelog150_1">支持直接导出 GBM 视频与 GBS 音频文件。</li>
-              <li data-i18n="changelog150_2">新增 SC 烧录卡 SDHC 专用播放器下载。</li>
-              <li data-i18n="changelog150_3">优化导出文件类型选择界面。</li>
+              <li data-i18n="changelog151_1">新增按单个 ROM 大小自动分卷输出，适合 32MB 单卡烧录卡。</li>
+              <li data-i18n="changelog151_2">整理导出格式界面，GBA ROM 与 GBM/GBS 文件导出改为二选一。</li>
+              <li data-i18n="changelog151_3">修复长视频播放器菜单时间显示超过 99 分钟后的显示限制。</li>
             </ul>
           </article>
           <details class="release-history">
             <summary data-i18n="changelogHistorySummary">展开完整记录</summary>
+            <article class="release-entry">
+              <div class="release-meta">
+                <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.0</strong></span>
+                <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-06-20">2026-06-20</time></span>
+              </div>
+              <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
+              <ul>
+                <li data-i18n="changelog150_1">支持直接导出 GBM 视频与 GBS 音频文件。</li>
+                <li data-i18n="changelog150_2">新增 SC 烧录卡 SDHC 专用播放器下载。</li>
+                <li data-i18n="changelog150_3">优化导出文件类型选择界面。</li>
+              </ul>
+            </article>
             <article class="release-entry">
               <div class="release-meta">
                 <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.4.6</strong></span>

@@ -1,0 +1,16 @@
+M3 optional WebAssembly video decoder packages
+
+Built from libav.js ff473905 with FFmpeg 8.1. The AV1 package additionally
+contains libaom 03087864. These packages are distributed separately from the M3
+encoder WebAssembly module and are loaded only when browser WebCodecs support is
+unavailable.
+
+FFmpeg is licensed under LGPL 2.1 or later for these configurations. libaom is
+licensed under the BSD 2-Clause License. Refer to the generated JavaScript
+headers and COPYING.LGPLv2.1 in each release directory for complete notices.
+
+Corresponding build source:
+https://github.com/ArcheyChen/web_decoder_ffmpeg_fallback
+
+Use the Git tag matching the decoder package release to obtain the exact source,
+configuration, and build scripts used for that release.

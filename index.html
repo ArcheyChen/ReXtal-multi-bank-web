@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="pageTitle">代号:重结晶</title>
-    <script type="module" crossorigin src="./assets/index-HXiMWCWh.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-fd3RAi6P.css">
+    <script type="module" crossorigin src="./assets/index-hPhwI295.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Y_9vpSS9.css">
   </head>
   <body>
     <main id="app">
@@ -28,7 +28,7 @@
           <p data-i18n="intro1">
             M3水晶引擎是GBA时代的优秀视频播放器，然而已经不再维护，无法在现代系统上运行，
             M3电影卡也难以买到，本项目旨在将其移植到现代系统上，并支持现代的输入视频格式。
-            本项目免费提供，禁止商用。
+            本项目面向个人用户免费提供；未经作者书面授权，禁止商业使用。
           </p>
           <p data-i18n="intro2">
             本工具以原样提供，不附带任何明示或暗示的担保。请自行确认生成文件适用于你的设备、
@@ -65,8 +65,13 @@
             </a>
           </article>
           <article class="info-card">
-            <h2 data-i18n="cardLicenseTitle">转载规则</h2>
-            <p data-i18n="cardLicenseText">可自由转载、镜像、重新封装，但必须保持免费，并注明作者 Ausar 与项目出处。为避免他人改名闭源，本项目源码暂不公开；待项目知名度提高后，再考虑完全开源。</p>
+            <h2 data-i18n="cardLicenseTitle">使用与商业授权</h2>
+            <p data-i18n="cardLicenseText">本项目允许个人非商业使用及免费转载。转载、镜像或重新封装时，必须保持免费，并注明作者 Ausar 与项目出处。未经作者书面授权，禁止将本项目、转码工具或其衍生版本用于销售、收费服务及其他商业用途。为避免他人改名闭源，主项目源码暂不公开；待项目知名度提高后，再考虑完全开源。</p>
+            <p>
+              <span data-i18n="cardCommercialAuth">当前获授权商业使用的店铺：</span>
+              <a href="https://shop35520744.taobao.com/" target="_blank" rel="noreferrer" data-i18n="cardCommercialStore">leon·diy（淘宝店铺）</a>
+            </p>
+            <p data-i18n="cardCommercialDisclaimer">商业授权仅代表该店铺获准在约定范围内使用本项目，不代表其为项目官方店铺，也不构成对其商品或服务的担保。</p>
           </article>
         </section>
 
@@ -175,8 +180,68 @@
             </select>
           </div>
           <div class="field" data-video-output-control>
+            <label for="decoder-backend" data-i18n="decoderBackendLabel">原视频解码器（仅转码用）</label>
+            <select id="decoder-backend">
+              <option value="auto" selected data-i18n="decoderBackendAuto">自动（推荐）</option>
+              <option value="webcodecs" data-i18n="decoderBackendWebCodecs">浏览器内置（WebCodecs）</option>
+              <option value="software" data-i18n="decoderBackendSoftware">FFmpeg 软件解码（兼容模式）</option>
+            </select>
+          </div>
+          <div class="field" data-video-output-control>
             <label for="worker-threads" data-i18n="workerThreadsLabel">编码线程数</label>
             <select id="worker-threads"></select>
+          </div>
+          <div class="field" data-video-output-control>
+            <label for="subtitle-file" data-i18n="subtitleFileLabel">外挂字幕（可选）</label>
+            <input id="subtitle-file" class="native-file-input" type="file" accept=".srt,application/x-subrip,text/plain" />
+            <div class="file-picker compact-file-picker">
+              <button id="subtitle-file-button" type="button" data-i18n="selectSubtitleFile">选择 SRT</button>
+              <span id="subtitle-file-name" class="file-name" data-i18n="noSubtitleFile">未选择字幕</span>
+            </div>
+          </div>
+          <div id="subtitle-options" class="subtitle-options" data-video-output-control hidden>
+            <div class="field">
+              <label for="subtitle-font-file" data-i18n="subtitleFontLabel">字幕字体（可选）</label>
+              <input id="subtitle-font-file" class="native-file-input" type="file" accept=".ttf,.otf,.woff,.woff2,font/ttf,font/otf,font/woff,font/woff2" />
+              <div class="file-picker compact-file-picker">
+                <button id="subtitle-font-file-button" type="button" data-i18n="selectSubtitleFont">选择字体</button>
+                <span id="subtitle-font-file-name" class="file-name" data-i18n="noSubtitleFont">使用系统字体</span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="subtitle-font-size" data-i18n="subtitleFontSizeLabel">字幕大小</label>
+              <select id="subtitle-font-size">
+                <option value="10">10 px</option>
+                <option value="12">12 px</option>
+                <option value="14" selected>14 px</option>
+                <option value="16">16 px</option>
+                <option value="18">18 px</option>
+                <option value="20">20 px</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="subtitle-bottom-margin" data-i18n="subtitleBottomMarginLabel">底部边距</label>
+              <input id="subtitle-bottom-margin" type="number" min="0" max="60" value="8" />
+            </div>
+            <div class="field">
+              <label for="subtitle-time-offset" data-i18n="subtitleTimeOffsetLabel">时间偏移（秒，正数延后）</label>
+              <input id="subtitle-time-offset" type="number" min="-3600" max="3600" step="0.1" value="0" />
+            </div>
+            <div class="field">
+              <label for="subtitle-preview-time" data-i18n="subtitlePreviewTimeLabel">预览时间（秒）</label>
+              <input id="subtitle-preview-time" type="number" min="0" step="0.1" value="0" />
+            </div>
+            <div class="field subtitle-preview-text-field">
+              <label for="subtitle-preview-text" data-i18n="subtitlePreviewTextLabel">预览文字（留空则使用 SRT）</label>
+              <textarea id="subtitle-preview-text" rows="2"></textarea>
+            </div>
+            <div class="subtitle-preview-field">
+              <label for="subtitle-preview" data-i18n="subtitlePreviewLabel">字幕预览</label>
+              <canvas id="subtitle-preview" width="240" height="160"></canvas>
+              <div id="subtitle-preview-message" class="field-help" role="status"></div>
+              <div id="subtitle-video-preview-message" class="field-help" role="status"></div>
+              <video id="subtitle-preview-video" muted preload="auto" hidden></video>
+            </div>
           </div>
           <div class="field" data-gba-output-control>
             <label class="checkbox-control">
@@ -280,22 +345,38 @@
         <section class="release-notes" aria-label="更新记录">
           <div class="release-heading">
             <h2 data-i18n="changelogTitle">更新记录</h2>
-            <span id="version-text" class="version-pill">v1.5.1</span>
+            <span id="version-text" class="version-pill">v1.5.2</span>
           </div>
           <article class="release-entry">
             <div class="release-meta">
-              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.1</strong></span>
-              <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-07-02">2026-07-02</time></span>
+              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.2</strong></span>
+              <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-08-03">2026-08-03</time></span>
             </div>
             <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
             <ul>
-              <li data-i18n="changelog151_1">新增按单个 ROM 大小自动分卷输出，适合 32MB 单卡烧录卡。</li>
-              <li data-i18n="changelog151_2">整理导出格式界面，GBA ROM 与 GBM/GBS 文件导出改为二选一。</li>
-              <li data-i18n="changelog151_3">修复长视频播放器菜单时间显示超过 99 分钟后的显示限制。</li>
+              <li data-i18n="changelog152_1">新增基于 FFmpeg 的原视频解码器，支持将 HEVC/H.265、AV1、VVC/H.266 等格式作为转码输入。</li>
+              <li data-i18n="changelog152_2">原视频解码器采用分层按需加载，默认优先使用浏览器内置 WebCodecs，必要时切换 FFmpeg 兼容模式。</li>
+              <li data-i18n="changelog152_3">新增 SRT 外挂字幕烧录功能。</li>
+              <li data-i18n="changelog152_4">字幕支持系统字体或上传字体，并可调整大小、底部边距和时间偏移。</li>
+              <li data-i18n="changelog152_5">新增字幕时间轴、自定义文字及视频画面组合预览。</li>
+              <li data-i18n="changelog152_6">统一媒体、字幕和字体文件选择控件的界面样式。</li>
+              <li data-i18n="changelog152_7">优化长视频字幕检索及多线程编码稳定性。</li>
             </ul>
           </article>
           <details class="release-history">
             <summary data-i18n="changelogHistorySummary">展开完整记录</summary>
+            <article class="release-entry">
+              <div class="release-meta">
+                <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.1</strong></span>
+                <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-07-02">2026-07-02</time></span>
+              </div>
+              <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
+              <ul>
+                <li data-i18n="changelog151_1">新增按单个 ROM 大小自动分卷输出，适合 32MB 单卡烧录卡。</li>
+                <li data-i18n="changelog151_2">整理导出格式界面，GBA ROM 与 GBM/GBS 文件导出改为二选一。</li>
+                <li data-i18n="changelog151_3">修复长视频播放器菜单时间显示超过 99 分钟后的显示限制。</li>
+              </ul>
+            </article>
             <article class="release-entry">
               <div class="release-meta">
                 <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.0</strong></span>

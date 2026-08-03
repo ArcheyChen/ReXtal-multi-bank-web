@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title data-i18n="pageTitle">代号:重结晶</title>
-    <script type="module" crossorigin src="./assets/index-hPhwI295.js"></script>
+    <script type="module" crossorigin src="./assets/index-dHCcouXR.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-Y_9vpSS9.css">
   </head>
   <body>
@@ -345,26 +345,37 @@
         <section class="release-notes" aria-label="更新记录">
           <div class="release-heading">
             <h2 data-i18n="changelogTitle">更新记录</h2>
-            <span id="version-text" class="version-pill">v1.5.2</span>
+            <span id="version-text" class="version-pill">v1.5.3</span>
           </div>
           <article class="release-entry">
             <div class="release-meta">
-              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.2</strong></span>
+              <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.3</strong></span>
               <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-08-03">2026-08-03</time></span>
             </div>
             <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
             <ul>
-              <li data-i18n="changelog152_1">新增基于 FFmpeg 的原视频解码器，支持将 HEVC/H.265、AV1、VVC/H.266 等格式作为转码输入。</li>
-              <li data-i18n="changelog152_2">原视频解码器采用分层按需加载，默认优先使用浏览器内置 WebCodecs，必要时切换 FFmpeg 兼容模式。</li>
-              <li data-i18n="changelog152_3">新增 SRT 外挂字幕烧录功能。</li>
-              <li data-i18n="changelog152_4">字幕支持系统字体或上传字体，并可调整大小、底部边距和时间偏移。</li>
-              <li data-i18n="changelog152_5">新增字幕时间轴、自定义文字及视频画面组合预览。</li>
-              <li data-i18n="changelog152_6">统一媒体、字幕和字体文件选择控件的界面样式。</li>
-              <li data-i18n="changelog152_7">优化长视频字幕检索及多线程编码稳定性。</li>
+              <li data-i18n="changelog153_1">Hotfix：修复 FFmpeg 多线程转码在完成首轮 60 秒分段后可能卡住的问题。</li>
+              <li data-i18n="changelog153_2">验证并强化跨视频分段的字幕时间轴处理。</li>
             </ul>
           </article>
           <details class="release-history">
             <summary data-i18n="changelogHistorySummary">展开完整记录</summary>
+            <article class="release-entry">
+              <div class="release-meta">
+                <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.2</strong></span>
+                <span><span data-i18n="changelogDateLabel">日期</span>：<time datetime="2026-08-03">2026-08-03</time></span>
+              </div>
+              <div class="release-update-label" data-i18n="changelogUpdateLabel">更新：</div>
+              <ul>
+                <li data-i18n="changelog152_1">新增基于 FFmpeg 的原视频解码器，支持将 HEVC/H.265、AV1、VVC/H.266 等格式作为转码输入。</li>
+                <li data-i18n="changelog152_2">原视频解码器采用分层按需加载，默认优先使用浏览器内置 WebCodecs，必要时切换 FFmpeg 兼容模式。</li>
+                <li data-i18n="changelog152_3">新增 SRT 外挂字幕烧录功能。</li>
+                <li data-i18n="changelog152_4">字幕支持系统字体或上传字体，并可调整大小、底部边距和时间偏移。</li>
+                <li data-i18n="changelog152_5">新增字幕时间轴、自定义文字及视频画面组合预览。</li>
+                <li data-i18n="changelog152_6">统一媒体、字幕和字体文件选择控件的界面样式。</li>
+                <li data-i18n="changelog152_7">优化长视频字幕检索及多线程编码稳定性。</li>
+              </ul>
+            </article>
             <article class="release-entry">
               <div class="release-meta">
                 <span><span data-i18n="changelogVersionLabel">版本</span>：<strong>1.5.1</strong></span>
